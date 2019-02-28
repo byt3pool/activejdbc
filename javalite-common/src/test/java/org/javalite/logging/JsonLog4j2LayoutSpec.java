@@ -1,5 +1,5 @@
 /*
-Copyright 2009-2019 Igor Polevoy
+Copyright 2009-2018 Igor Polevoy
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -35,12 +35,7 @@ import static org.javalite.test.jspec.JSpec.a;
 import static org.javalite.test.jspec.JSpec.the;
 
 
-/**
- * See log4j configuration in the log4j.properties file
- *
- * @author igor on 1/13/17.
- */
-public class JsonLog4jLayoutSpec {
+public class JsonLog4j2LayoutSpec {
 
     @Before
     public void before(){
@@ -53,7 +48,7 @@ public class JsonLog4jLayoutSpec {
     }
 
     @Test
-    public void shouldLogJson() throws IOException {
+    public void shouldLogJson() throws IOException {           
         Logger logger = LoggerFactory.getLogger(getClass());
         logger.info("hello");
         logger.info("world");
@@ -63,7 +58,7 @@ public class JsonLog4jLayoutSpec {
         String logLine1 = lines[0];
         Map log1 = JsonHelper.toMap(logLine1);
         a(log1.get("message")).shouldBeEqual("hello");
-        a(log1.get("logger")).shouldBeEqual("org.javalite.logging.JsonLog4jLayoutSpec");
+        a(log1.get("logger")).shouldBeEqual("org.javalite.logging.JsonLog4j2LayoutSpec");
         a(log1.get("level")).shouldBeEqual("INFO");
 
         String logLine2 = lines[1];
